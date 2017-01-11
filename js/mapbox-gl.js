@@ -34,6 +34,21 @@ mapboxgl.util.getArrayBuffer = ajax.getArrayBuffer;
 const config = require('./util/config');
 mapboxgl.config = config;
 
+const complexTextPlugin = require('./source/complex_text_plugin');
+
+mapboxgl.setComplexTextPlugin = complexTextPlugin.setComplexTextPlugin;
+
+ /**
+  * Sets the map's [complex text shaping plugin](https://www.mapbox.com/mapbox-gl-js/plugins/#mapbox-gl-arabic).
+  *
+  * @function setComplexTextPlugin
+  * @param {string} pluginURL URL pointing to the Mapbox complex text shaping plugin source.
+  * @param {Function} callback Called with an error argument if there is an error.
+  * @example
+  * mapboxgl.setComplexTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-arabic/v0.1/mapbox-gl-arabic.js');
+  * @see [Displaying Arabic text](https://www.mapbox.com/mapbox-gl-js/example/mapbox-gl-arabic/)
+  */
+
 Object.defineProperty(mapboxgl, 'accessToken', {
     get: function() { return config.ACCESS_TOKEN; },
     set: function(token) { config.ACCESS_TOKEN = token; }

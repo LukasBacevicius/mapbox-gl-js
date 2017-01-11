@@ -7,6 +7,8 @@ const VectorTileWorkerSource = require('./vector_tile_worker_source');
 const GeoJSONWorkerSource = require('./geojson_worker_source');
 const assert = require('assert');
 
+const globalComplexTextPlugin = require('./complex_text_plugin');
+
 /**
  * @private
  */
@@ -30,6 +32,14 @@ class Worker {
                 throw new Error(`Worker source with name "${name}" already registered.`);
             }
             this.workerSourceTypes[name] = WorkerSource;
+        };
+
+        this.self.registerComplexTextPlugin = (complexTextPlugin) => {
+            if (globalComplexTextPlugin.applyArabicShaping || globalComplexTextPlugin.processBidirectionalText) {
+                throw new Error('Complex text plugin already registered.');
+            }
+            globalComplexTextPlugin['applyArabicShaping'] = complexTextPlugin.applyArabicShaping;
+            globalComplexTextPlugin['processBidirectionalText'] = complexTextPlugin.processBidirectionalText;
         };
     }
 
@@ -83,6 +93,17 @@ class Worker {
     loadWorkerSource(map, params, callback) {
         try {
             this.self.importScripts(params.url);
+            callback();
+        } catch (e) {
+            callback(e);
+        }
+    }
+
+    loadComplexTextPlugin(map, pluginURL, callback) {
+        try {
+            if (!globalComplexTextPlugin.applyArabicShaping && !globalComplexTextPlugin.processBidirectionalText) {
+                this.self.importScripts(pluginURL);
+            }
             callback();
         } catch (e) {
             callback(e);
