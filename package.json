@@ -68,6 +68,7 @@
     "flow-remove-types": "^1.0.4",
     "github-slugger": "^1.1.1",
     "gl": "^4.0.1",
+    "glob": "^7.0.3",
     "handlebars": "^4.0.5",
     "highlight.js": "9.8.0",
     "in-publish": "^2.0.0",
@@ -143,7 +144,7 @@
     "prepublish": "in-publish && run-s build-dev build-min || not-in-publish",
     "build-style-spec": "node js/style-spec/minify.js",
     "build-style-spec-docs": "cd docs/style-spec/_generate && node generate.js",
-    "build-style-spec-api-docs": "cat js/style-spec/*.js js/style-spec/*/*.js | dox --raw --skipSingleStar | doxme > js/style-spec/API.md",
+    "build-style-spec-api-docs": "cat js/style-spec/*.js js/style-spec/*/*.js | dox --raw --skipSingleStar | doxme > js/style-spec/API.md"
   },
   "bin": {
     "gl-style-migrate": "bin/gl-style-migrate",
