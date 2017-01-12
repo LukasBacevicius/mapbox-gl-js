@@ -199,5 +199,16 @@
         ]
       }
     }
+  },
+  "mapbox-gl-arabic": {
+    "prefix": "mapbox-gl-arabic",
+    "latest": "0.1.0",
+    "v": {
+      "0.1.0": {
+        "files": [
+          "mapbox-gl-arabic.js"
+        ]
+      }
+    }
   }
 }
