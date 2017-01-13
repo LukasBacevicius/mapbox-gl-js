@@ -1,0 +1,21 @@
+---
+layout: example
+category: example
+title: Add support for Arabic script
+description: 'Use the <a target="_blank" href="https://github.com/mapbox/mapbox-icu-js">mapbox-gl-arabic</a> plugin to support languages using the Arabic script or right-to-left layout.'
+tags:
+  - internationalization
+---
+<div id='map'></div>
+
+<script>
+mapboxgl.setComplexTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-arabic/v{{site.data.plugins.mapbox-gl-arabic.latest}}/mapbox-gl-arabic.js');
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [44.3763, 33.2788],
+    zoom: 11
+});
+
+</script>
