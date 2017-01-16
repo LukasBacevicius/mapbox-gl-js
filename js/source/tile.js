@@ -129,11 +129,11 @@ class Tile {
     }
 
     redoPlacement(source) {
-        if (source.type !== 'vector' && source.type !== 'geojson') {
+        if ((source.type !== 'vector' && source.type !== 'geojson') ||
+            !this.hasData() || !this.collisionTile) {
             return;
         }
-
-        if (this.state !== 'loaded' || this.state === 'reloading') {
+        if (this.state === 'reloading') {
             this.redoWhenDone = true;
             return;
         }
