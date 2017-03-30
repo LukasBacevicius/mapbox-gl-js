@@ -4,6 +4,7 @@
 /dist/mapbox-gl-dev.js
 *.js.map
 node_modules
+yarn-error.log
 npm-debug.log
 *.sublime-*
 coverage
